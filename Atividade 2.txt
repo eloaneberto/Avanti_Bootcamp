@@ -1,0 +1,60 @@
+1. Escreva uma função que receba uma lista de números e retorne outra lista com os números ímpares. 
+
+def filtrar_impares(lista):
+    return [n for n in lista if n % 2 != 0]
+
+2. Escreva uma função que receba uma lista de números e retorne outra lista com os números primos presentes. 
+def filtrar_primos(lista):
+    def eh_primo(num):
+        if num < 2:
+            return False
+        for i in range(2, int(num**0.5) + 1):
+            if num % i == 0:
+                return False
+        return True
+    return [n for n in lista if eh_primo(n)]
+
+3. Escreva uma função que receba duas listas e retorne outra lista com os elementos que estão presentes em apenas uma das listas. 
+
+def elementos_unicos(lista1, lista2):
+    return list(set(lista1) ^ set(lista2))
+
+4. Dada uma lista de números inteiros, escreva uma função para encontrar o segundo maior valor na lista. 
+
+def segundo_maior(lista):
+    return sorted(set(lista))[-2]
+
+5. Crie uma função que receba uma lista de tuplas, cada uma contendo o nome e a idade de uma pessoa, e retorne a 
+lista ordenada pelo nome das pessoas em ordem alfabética. 
+
+def ordenar_por_nome(pessoas):
+    return sorted(pessoas, key=lambda x: x[0])
+
+6. Como identificar e tratar outliers em uma coluna numérica usando desvio padrão ou quartis? 
+O desvio padrão é usado para valores que estão muito afastados da média e o quartis para valores abaixo do Q1.
+
+7. Como concatenar vários DataFrames (empilhando linhas ou colunas), mesmo que tenham colunas diferentes? 
+Dica: Utiliza-se pd.concat() especificando axis=0 (linhas) ou axis=1 (colunas). 
+Quando há colunas diferentes, os valores ausentes são preenchidos com NaN. 
+Para concatenar DataFrames no pandas eu uso a função pd.concat(). Se quero empilhar os dados um embaixo do outro, uso axis=0. 
+Se quero juntar pelas colunas, uso axis=1. 
+
+8. Utilizando pandas, como realizar a leitura de um arquivo CSV em um DataFrame e exibir as primeiras linhas?  
+import pandas as pd
+
+df = pd.read_csv("dados.csv")
+print(df.head())
+
+9. Utilizando pandas, como selecionar uma coluna específica e filtrar linhas em um “DataFrame” com base em uma condição? 
+
+import pandas as pd
+
+coluna_especifica = df["nome_coluna"]       
+linhas_filtradas = df[df["idade"] > 18]    
+
+10. Utilizando pandas, como lidar com valores ausentes (NaN) em um DataFrame? 
+import pandas as pd
+
+df_sem_na = df.dropna()
+
+df_preenchido = df.fillna(0)
